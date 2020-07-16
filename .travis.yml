@@ -2,14 +2,10 @@ language: erlang
 
 os: linux
 
-dist: bionic
+dist: xenial
 
 before_install:
   - pip install --user cpp-coveralls coveralls-merge
-
-install:
-  - sudo apt-get -q install libgd-dev libwebp-dev libpng-dev libjpeg-dev
-  - ./configure --enable-gcov
 
 script: make && make xref && make test
 
@@ -18,6 +14,6 @@ after_success:
   - coveralls-merge c.json erlang.json
 
 otp_release:
-  - 22.0
-  - 22.3
+  - 17.3
+  - 19.3
   - 23.0
